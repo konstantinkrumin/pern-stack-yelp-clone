@@ -5,21 +5,29 @@ import Home from "./routes/Home";
 import UpdatePage from "./routes/UpdatePage";
 import RestaurantDetailPage from "./routes/RestaurantDetailPage";
 
+import { RestaurantContextProvider } from "./context/RestaurantsContext";
+
 const App = () => {
   return (
-    <div>
-      <Router>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/restaurants/:id/update" component={UpdatePage} />
-          <Route
-            exact
-            path="/restaurants/:id"
-            component={RestaurantDetailPage}
-          />
-        </Switch>
-      </Router>
-    </div>
+    <RestaurantContextProvider>
+      <div className="container">
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route
+              exact
+              path="/restaurants/:id/update"
+              component={UpdatePage}
+            />
+            <Route
+              exact
+              path="/restaurants/:id"
+              component={RestaurantDetailPage}
+            />
+          </Switch>
+        </Router>
+      </div>
+    </RestaurantContextProvider>
   );
 };
 
