@@ -6,6 +6,7 @@ import { RestaurantsContext } from "../context/RestaurantsContext";
 
 const AddRestaurant = () => {
   const { addRestaurants } = useContext(RestaurantsContext);
+
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [priceRange, setPriceRange] = useState("Price Range");
@@ -54,7 +55,7 @@ const AddRestaurant = () => {
               className="custom-select my-1 mr-sm-2"
               onChange={(e) => setPriceRange(e.target.value)}
             >
-              <option display>Price Range</option>
+              <option disabled>Price Range</option>
               <option value="1">$</option>
               <option value="2">$$</option>
               <option value="3">$$$</option>
