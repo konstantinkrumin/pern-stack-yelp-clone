@@ -1,22 +1,59 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+
+import RestaurantFinder from "../apis/RestaurantFinder";
+
+import { RestaurantsContext } from "../context/RestaurantsContext";
 
 const AddRestaurant = () => {
+  const { addRestaurants } = useContext(RestaurantsContext);
+  const [name, setName] = useState("");
+  const [location, setLocation] = useState("");
+  const [priceRange, setPriceRange] = useState("Price Range");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await RestaurantFinder.post("/", {
+        name,
+        location,
+        price_range: priceRange,
+      });
+
+      addRestaurants(response.data.data.restaurant);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="mb-4">
       <form>
         <div className="form-row">
           <div className="col">
-            <input type="text" className="form-control" placeholder="name" />
+            <input
+              type="text"
+              value={name}
+              placeholder="Name"
+              className="form-control"
+              onChange={(e) => setName(e.target.value)}
+            />
           </div>
           <div className="col">
             <input
               type="text"
+              value={location}
+              placeholder="Location"
               className="form-control"
-              placeholder="location"
+              onChange={(e) => setLocation(e.target.value)}
             />
           </div>
           <div className="col">
-            <select className="custom-select my-1 mr-sm-2">
+            <select
+              value={priceRange}
+              className="custom-select my-1 mr-sm-2"
+              onChange={(e) => setPriceRange(e.target.value)}
+            >
               <option display>Price Range</option>
               <option value="1">$</option>
               <option value="2">$$</option>
@@ -25,7 +62,13 @@ const AddRestaurant = () => {
               <option value="5">$$$$$</option>
             </select>
           </div>
-          <button className="btn btn-primary">Add</button>
+          <button
+            type="submit"
+            className="btn btn-primary"
+            onClick={handleSubmit}
+          >
+            Add
+          </button>
         </div>
       </form>
     </div>
