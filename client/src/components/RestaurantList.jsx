@@ -44,7 +44,7 @@ const RestaurantList = (props) => {
     }
   };
 
-  const handleRestautantSelect = (id) => {
+  const handleRestaurantSelect = (id) => {
     history.push(`/restaurants/${id}`);
   };
 
@@ -80,7 +80,7 @@ const RestaurantList = (props) => {
               return (
                 <tr
                   key={restaurant.id}
-                  onClick={() => handleRestautantSelect(restaurant.id)}
+                  onClick={() => handleRestaurantSelect(restaurant.id)}
                 >
                   <td>{restaurant.name}</td>
                   <td>{restaurant.location}</td>
