@@ -97,6 +97,11 @@ app.put("/api/v1/restaurants/:id", async (req, res) => {
 
 app.delete("/api/v1/restaurants/:id", async (req, res) => {
   try {
+    const reviews = await db.query(
+      "DELETE FROM reviews WHERE restaurant_id = $1",
+      [req.params.id]
+    );
+
     const results = await db.query("DELETE FROM restaurants WHERE id = $1", [
       req.params.id,
     ]);
