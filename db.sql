@@ -47,3 +47,6 @@ DROP DATABASE practice;
 
 -- to insert data into the table:
 INSERT INTO restaurants (id, name, location, price_range) VALUES (123, 'McDonalds', 'New York', 3);
+
+-- to get an average rating for specific column, round to 2 decimal places and show under a specific column name:
+SELECT TRUNC(AVG(rating), 2) AS avg_rating FROM reviews WHERE restaurant_id = 2;
