@@ -12,4 +12,4 @@ Technology Stack: **Javascript**, **React**, **Bootstrap**, **Node.JS + Express*
 
 ### Update Restaurant Page
 
-![Update Restaurant Page](https://i.imgur.com/LrVKv4s.png)
+![Update Restaurant Page](https://i.imgur.com/I2Yqs81.png)
